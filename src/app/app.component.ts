@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NotesService } from './services/notes.service';
 import { MatSnackBar } from '@angular/material';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   categorias: any  = ['Trabajo', 'Personal'];
   nota:any = {};
   notas : any = [];
-  constructor(private notesService: NotesService, private snackBar: MatSnackBar) {
+  constructor(private notesService: NotesService, private snackBar: MatSnackBar, private authService : AuthService) {
     this.notesService.getNotes().valueChanges()
     .subscribe( (fbNotas) => {
       this.notas = fbNotas;
@@ -44,5 +45,9 @@ export class AppComponent {
       this.nota = {};
       this.snackBar.open('Nota eliminada', null, {duration: 8000});
     } ) ;
+  }
+
+  login() {
+    this.authService.loginWithFacebook();
   }
 }

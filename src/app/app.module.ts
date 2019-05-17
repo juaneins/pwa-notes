@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { NotesService } from './services/notes.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { NotesService } from './services/notes.service';
     AngularFireDatabaseModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [NotesService],
+  providers: [NotesService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
