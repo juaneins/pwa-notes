@@ -22,7 +22,7 @@
     </mat-expansion-panel-header>
 
     <mat-form-field>
-      <input matInput placeholder="Título de la nota" [(ngModel)]="nota.titulo">
+      <input matInput placeholder="Título de la nota" [(ngModel)]="nota.titulo">     
     </mat-form-field>
 
     <mat-form-field>     
@@ -43,7 +43,9 @@
 
   <mat-list>
     <mat-list-item *ngFor="let nota of notas" (click)="seleccionarNota(nota)">
-      <h3 matLine> {{nota.titulo}} </h3>
+      <h3 matLine> {{nota.titulo}} 
+        <div class='icono-eliminar' (click)="eliminarNota(nota)">❌</div>
+      </h3>
       <p matLine> {{nota.cuerpo}}  </p>
       <small matLine> {{nota.categoria}} - {{nota.id | date}} </small>
     </mat-list-item>

@@ -39,4 +39,10 @@ export class AppComponent {
     this.nota = nota;
   }
 
+  eliminarNota(nota) {
+    this.notesService.deleteNote(nota).then( () => {
+      this.nota = {};
+      this.snackBar.open('Nota eliminada', null, {duration: 8000});
+    } ) ;
+  }
 }
