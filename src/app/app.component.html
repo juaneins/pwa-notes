@@ -42,26 +42,14 @@
   </mat-expansion-panel>
 
   <mat-list>
-    <mat-list-item>
-      <h3 matLine> cabecera 1 </h3>
-      <p matLine> cuerpo 1 </p>
-      <p matLine class="demo-2"> cuerpo 2 </p>
+    <mat-list-item *ngFor="let nota of notas" >
+      <h3 matLine> {{nota.titulo}} </h3>
+      <p matLine> {{nota.cuerpo}}  </p>
+      <small matLine> {{nota.categoria}} - {{nota.id | date}} </small>
     </mat-list-item>
   </mat-list>
-  <mat-list>
-    <mat-list-item>
-      <h3 matLine> cabecera 2 </h3>
-      <p matLine> cuerpo 2 </p>
-      <p matLine class="demo-2"> cuerpo 22 </p>
-    </mat-list-item>
-  </mat-list>
-  <mat-list>
-    <mat-list-item>
-      <h3 matLine> cabecera 3 </h3>
-      <p matLine> cuerpo 3</p>
-      <p matLine class="demo-2"> cuerpo 32 </p>
-    </mat-list-item>
-  </mat-list>
+  
+ 
 
 </mat-accordion>
 

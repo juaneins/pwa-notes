@@ -12,7 +12,14 @@ export class AppComponent {
   panelOpenState = false;
   categorias: any  = ['Trabajo', 'Personal'];
   nota:any = {};
-  constructor(private notesService: NotesService, private snackBar: MatSnackBar) {}
+  notas : any = [];
+  constructor(private notesService: NotesService, private snackBar: MatSnackBar) {
+    this.notesService.getNotes().valueChanges()
+    .subscribe( (fbNotas) => {
+      this.notas = fbNotas;
+      console.log(this.notas);
+    } )
+  }
 
   guardarNota() {
     this.nota.id = Date.now();
