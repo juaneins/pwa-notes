@@ -22,7 +22,9 @@ export class AppComponent {
   }
 
   guardarNota() {
-    this.nota.id = Date.now();
+    if (!this.nota.id) {
+      this.nota.id = Date.now();
+    }   
     console.log("Nota guardada:", this.nota);
     this.notesService.createNote(this.nota).then(() => {
       this.nota = {};
@@ -30,6 +32,11 @@ export class AppComponent {
         duration: 2000, 
       });
     })
+  }
+
+  seleccionarNota(nota) {
+    console.log(nota);
+    this.nota = nota;
   }
 
 }
