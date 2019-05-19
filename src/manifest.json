@@ -6,6 +6,7 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "http://127.0.0.1:8080",
+  "gcm_sender_id": "923284455412",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
