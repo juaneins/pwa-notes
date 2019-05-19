@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { BehaviorSubject } from 'rxjs';
+import 'firebase/messaging';
 
 
 @Injectable({
@@ -30,16 +31,20 @@ export class MessagingService {
   getPermission() {
     this.messaging.requestPermission()
     .then(() => {
+      
       console.log('Notification permission granted.');
       return this.messaging.getToken()
     } )
     .then(token => {
+     
       console.log(token)
       this.updateToken(token)
     } )
     .catch(err => {
+      
       console.log('Unable to get permission to notify.', err);
     });
+    
   }
 
   receiveMessage() {

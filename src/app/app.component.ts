@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NotesService } from './services/notes.service';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from './services/auth.service';
+import { MessagingService } from './services/messaging.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,17 @@ export class AppComponent {
   categorias: any  = ['Trabajo', 'Personal'];
   nota:any = {};
   notas : any = [];
-  constructor(private notesService: NotesService, private snackBar: MatSnackBar, private authService : AuthService) {
+  message: any = {};
+  constructor(private notesService: NotesService, private snackBar: MatSnackBar, private authService : AuthService,
+    public messagingService: MessagingService) {
     this.notesService.getNotes().valueChanges()
     .subscribe( (fbNotas) => {
       this.notas = fbNotas;
       console.log(this.notas);
-    } )
+    } );
+    this.messagingService.getPermission();
+    this.messagingService.receiveMessage();
+    this.message = this.messagingService.currentMessage;
   }
 
   guardarNota() {
